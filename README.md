@@ -1,3 +1,8 @@
+# React学習のためにTodoリストを作ってみる
+# 機能はとりあえず「作成と削除」
+# 修正や詳細などは追々追加
+# React HooksやRedux、ライブラリなど気になったものを使う
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
