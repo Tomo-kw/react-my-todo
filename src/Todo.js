@@ -14,8 +14,10 @@ const Todo = () => {
         setText('')
     }
 
-    const deleteTodo = () => {
-        alert('削除')
+    const deleteTodo = (index) => {
+        const updateTodo = [...todos]
+        updateTodo.splice(index, 1)
+        setTodos(updateTodo)
     }
 
     const onChangeText = (e) => {
@@ -43,7 +45,7 @@ const Todo = () => {
                                 <div className='todo-list'>
                                     <p>{todo}</p>
                                     <p><Button variant="contained" color="error" onClick={() =>{
-                                        deleteTodo()
+                                        deleteTodo(index)
                                     }}>削除</Button></p>
                                 </div>
                             </li>
