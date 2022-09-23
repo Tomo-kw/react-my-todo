@@ -3,8 +3,22 @@ import {Button} from '@mui/material'
 
 const Todo = () => {
     const [text, setText] = useState('')
-    const [todos, setTodos] = useState([])
-    const createTodo = () => {
+    // const [todos, setTodos] = useState([])
+    const [todos, setTodos] = useState([
+        'あああああ',
+        'いいいいい'
+    ])
+    const [completeTodos, setCompleteTodos] = useState([
+        'かかかかかか',
+        'きききききき'
+    ])
+
+    const onChangeText = (e) => {
+        setText(e.target.value)
+    }
+
+    // 作成
+    const clickCreateTodo = () => {
         if(text === '') {
             alert('Todoを入力してください')
             return
@@ -14,14 +28,32 @@ const Todo = () => {
         setText('')
     }
 
-    const deleteTodo = (index) => {
+    // 削除
+    const clickDeleteTodo = (index) => {
         const updateTodo = [...todos]
+
         updateTodo.splice(index, 1)
         setTodos(updateTodo)
     }
 
-    const onChangeText = (e) => {
-        setText(e.target.value)
+    // 完了
+    const clickCompleteTodo = (index) => {
+        const completeTodo = [...todos]
+
+        completeTodo.splice(index, 1)
+        setTodos(completeTodo)
+        setCompleteTodos([...completeTodos, todos[index]])
+    }
+
+    // 戻す
+    const clickReturnTodo = (index) => 
+    {
+        const returnTodo = [...completeTodos]
+        
+        setTodos([...todos, returnTodo[index]])
+        returnTodo.splice(index, 1)
+        setCompleteTodos(returnTodo)
+
     }
 
     return (
@@ -33,20 +65,40 @@ const Todo = () => {
             <div className='createTodo'>
                 <h2>新規作成</h2>
                 <input type='text' placeholder='Todoを入力' value={text} onChange={onChangeText} />
-                <Button variant="contained" onClick={createTodo}>作成</Button>
+                <Button variant="contained" onClick={clickCreateTodo}>作成</Button>
             </div>
 
-            <div className='todo'>
-                <h2>TODOリスト</h2>
+            <div className='incompleteTodo'>
+                <h2>未完了リスト</h2>
                 <ul>
                     {todos.map((todo, index) => {
                         return(
                             <li key={index}>
-                                <div className='todo-list'>
+                                <div className='incomplete-list'>
                                     <p>{todo}</p>
+                                    <p><Button variant="contained" color="success" onClick={() =>{
+                                        clickCompleteTodo(index)
+                                    }}>完了</Button></p>
                                     <p><Button variant="contained" color="error" onClick={() =>{
-                                        deleteTodo(index)
+                                        clickDeleteTodo(index)
                                     }}>削除</Button></p>
+                                </div>
+                            </li>
+                        )
+                    })}
+                </ul>
+            </div>
+            <div className='completeTodo'>
+                <h2>完了リスト</h2>
+                <ul>
+                    {completeTodos.map((todo, index) => {
+                        return(
+                            <li key={index}>
+                                <div className='complete-list'>
+                                    <p>{todo}</p>
+                                    <p><Button variant="contained" color="secondary" onClick={() =>{
+                                        clickReturnTodo(index)
+                                    }}>戻す</Button></p>
                                 </div>
                             </li>
                         )

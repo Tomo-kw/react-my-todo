@@ -7,11 +7,11 @@ li {
   list-style: none;
 }
 
-.todo {
+.incompleteTodo {
   justify-content:center;
 }
 
-.todo-list {
+.incomplete-list, .complete-list {
   display: flex;
   justify-content:center;
 }
