@@ -1,29 +1,19 @@
+import React from 'react'
 import { Button } from "@mui/material"
-import { useState } from "react"
+import { useSelector, useDispatch } from 'react-redux'
+import { increment, decrement, resetCount } from '../features/counter/counterSlice'
 
 const Counter = () => {
-    const [count, setCount] = useState(0)
-
-    const countUp = () => {
-        setCount(count + 1)
-    }
-
-    const countDown = () => {
-        setCount(count - 1)
-    }
-
-    const countReset = () => {
-        setCount(0)
-    }
+    const count = useSelector((state) => state.counter.value)
+    const dispatch = useDispatch()
 
     return(
         <div>
-            <h1>カウンターでRedux</h1>
+            <h1>カウンター(Redux)</h1>
             <h2>COUNT : {count}</h2>
-            <Button onClick={countUp} variant="contained">UP</Button>
-            <Button onClick={countDown} variant="contained" color="error">Down</Button>
-            <Button onClick={countReset} variant="contained" color="success">Reaset</Button>
-
+            <Button onClick={() => dispatch(increment())} variant="contained">UP</Button>
+            <Button onClick={() => dispatch(decrement())} variant="contained" color="error">Down</Button>
+            <Button onClick={() => dispatch(resetCount())} variant="contained" color="success">Reaset</Button>
         </div>
     )
 }

@@ -18,4 +18,5 @@ li {
 
 .App {
   text-align: center;
+  display: flex;
 }
