@@ -1,9 +1,13 @@
 ### 作成目的
-React学習のためにTodoリストを作ってみる
+- React学習のためにTodoリストを作ってみる
 機能はとりあえず「作成と削除」
 修正や詳細などは追々追加
 React HooksやRedux、ライブラリなど気になったものを使う
 
+- Reduxを使ってみるためにカウンターの実装
+ 1. Reduxを使わずに実装
+ 2. Reduxを使って実装
+ 
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
