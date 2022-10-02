@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import {Button} from '@mui/material'
+import { Link } from 'react-router-dom'
 
 const Todo = () => {
     const [text, setText] = useState('')
@@ -57,56 +58,61 @@ const Todo = () => {
     }
 
     return (
-    <div className='wrapper'>
-        <div>
-        <h1>Todoリスト</h1>
-        </div>
-        <div>
-            <div className='createTodo'>
-                <h2>新規作成</h2>
-                <input type='text' placeholder='Todoを入力' value={text} onChange={onChangeText} />
-                <Button variant="contained" onClick={clickCreateTodo}>作成</Button>
-            </div>
+        <>
+            <div className='wrapper'>
+                <div>
+                <h1>Todoリスト</h1>
+                </div>
+                <div>
+                    <div className='createTodo'>
+                        <h2>新規作成</h2>
+                        <input type='text' placeholder='Todoを入力' value={text} onChange={onChangeText} />
+                        <Button variant="contained" onClick={clickCreateTodo}>作成</Button>
+                    </div>
 
-            <div className='incompleteTodo'>
-                <h2>未完了リスト</h2>
-                <ul>
-                    {todos.map((todo, index) => {
-                        return(
-                            <li key={index}>
-                                <div className='incomplete-list'>
-                                    <p>{todo}</p>
-                                    <p><Button variant="contained" color="success" onClick={() =>{
-                                        clickCompleteTodo(index)
-                                    }}>完了</Button></p>
-                                    <p><Button variant="contained" color="error" onClick={() =>{
-                                        clickDeleteTodo(index)
-                                    }}>削除</Button></p>
-                                </div>
-                            </li>
-                        )
-                    })}
-                </ul>
+                    <div className='incompleteTodo'>
+                        <h2>未完了リスト</h2>
+                        <ul>
+                            {todos.map((todo, index) => {
+                                return(
+                                    <li key={index}>
+                                        <div className='incomplete-list'>
+                                            <p>{todo}</p>
+                                            <p><Button variant="contained" color="success" onClick={() =>{
+                                                clickCompleteTodo(index)
+                                            }}>完了</Button></p>
+                                            <p><Button variant="contained" color="error" onClick={() =>{
+                                                clickDeleteTodo(index)
+                                            }}>削除</Button></p>
+                                        </div>
+                                    </li>
+                                )
+                            })}
+                        </ul>
+                    </div>
+                    <div className='completeTodo'>
+                        <h2>完了リスト</h2>
+                        <ul>
+                            {completeTodos.map((todo, index) => {
+                                return(
+                                    <li key={index}>
+                                        <div className='complete-list'>
+                                            <p>{todo}</p>
+                                            <p><Button variant="contained" color="secondary" onClick={() =>{
+                                                clickReturnTodo(index)
+                                            }}>戻す</Button></p>
+                                        </div>
+                                    </li>
+                                )
+                            })}
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <div className='completeTodo'>
-                <h2>完了リスト</h2>
-                <ul>
-                    {completeTodos.map((todo, index) => {
-                        return(
-                            <li key={index}>
-                                <div className='complete-list'>
-                                    <p>{todo}</p>
-                                    <p><Button variant="contained" color="secondary" onClick={() =>{
-                                        clickReturnTodo(index)
-                                    }}>戻す</Button></p>
-                                </div>
-                            </li>
-                        )
-                    })}
-                </ul>
+            <div>
+                <Link to={'/'}>ホームへ</Link>
             </div>
-        </div>
-    </div>
+        </>
     )
 }
 
