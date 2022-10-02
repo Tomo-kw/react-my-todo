@@ -8,6 +8,8 @@ React HooksやRedux、ライブラリなど気になったものを使う
  1. Reduxを使わずに実装
  2. Reduxを使って実装
  
+- React-router-domを使ってTodoリスト・カウンターを別ページに分けた
+ 
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
